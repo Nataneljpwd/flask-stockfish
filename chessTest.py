@@ -1,13 +1,22 @@
 from flask import Flask, request, jsonify, session, make_response
 from stockfish import Stockfish
 
+from sys import platform
+import os
 import string
 
 app = Flask(__name__)
 # change to the location of stockfish
 
+path = ""
+# if platform == "linux" or platform == "linux2":
+#     path = os.path.abspath("linux-ai")
+if platform == "darwin":
+    path = os.path.abspath("mac-arm")
+elif platform == "win32":
+    path = os.getcwd() + "/stockfish_15.1_win_x64_avx2/stockfish-windows-2022-x86-64-avx2.exe"
 
-stockfish = Stockfish('/opt/homebrew/Cellar/stockfish/15.1/bin/stockfish')
+stockfish = Stockfish(path)
 app.secret_key = 'BAD_SECRET_KEY'
 
 
