@@ -15,9 +15,11 @@ if platform == "darwin":
     path = os.path.abspath("mac-arm")
 elif platform == "win32":
     path = os.getcwd() + "/stockfish_15.1_win_x64_avx2/stockfish-windows-2022-x86-64-avx2.exe"
+else:
+    path = os.getcwd() + "/stockfish_15.1_linux_x64_avx2/stockfish-ubuntu-20.04-x86-64-avx2" 
 
 stockfish = Stockfish(path)
-app.secret_key = 'BAD_SECRET_KEY'
+app.secret_key = 'BAD_SERET_KEY'
 
 
 @app.route("/ai", methods=["POST"])
